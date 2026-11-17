@@ -1,6 +1,31 @@
 public class Assignment01Q05 {
-    public static int findShortestPath(int[][] m, int i, int j) {
-        // TODO: implement
+    public static int findShortestPath(int[][] m, int i, int j) { 
+         int n = m.length; 
+         boolean[] visited = new boolean [n];
+         int[] distance =  new int [n];
+         int[] queue = new int [n];
+         int first = 0;
+         int last = 0;
+         queue[last++] = i;
+         visited[i] = true;
+         while(first < last) {
+            int current = queue[first++];
+            if (current == j) {
+                return distance[current];
+            }
+            for (int k = 0; k < n; k++) {
+                if (m[current][k] == 1 && !visited[k]) {
+                    visited[k] = true;
+                    distance[k] = distance[current] + 1;
+                    queue[last++] = k;
+
+                } 
+
+                
+            }
+         }
+
+
         return -1;
     }
 
